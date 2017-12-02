@@ -1,2 +1,2 @@
 This repository contains solutions to Project Euler Problems. The problems are available at https://projecteuler.net/archives. The language used to solve the problems is Python (version 3.6.3 at the time of writing).
-The scripts have been named as per the problems' names on the website. The problem statements can be found as comments in the scripts themselves.
+The scripts have been named as per the problems' names on the website. The problem statements can be found as comments in the scripts themselves. I haven't included the solution logic for every problem but the solutions should be fairly easy to understand if looked at carefully along with debugging.
