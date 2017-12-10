@@ -16,7 +16,7 @@ The first function is a function to generate the triangular numbers. In the func
 
 Now, the second function calculates the word value of a word and checks whether that word value is a triangular number or not. I instantiate the generator function in the variable, triangularNumbers. Then, I calculate the sum of the positions of the letters of the word using the map and reduce functions in conjugation. The function returns true if the sum is in the triangular number iterator, else it returns False.
 
-Inside the context manager, I first to some string parsing to obtain all the words in a desired format. Then, I use the filter function to obtain all the words which return true when the second function is called with the words as the parameter, and take the list of the resultant list. This length is the required answer.
+Inside the context manager, I first do some string parsing to obtain all the words in a desired format. Then, I use the filter function to obtain all the words which return true when the second function is called with the words as the parameter, and take the list of the resultant list. This length is the required answer.
 '''
 
 letters = {chr(i): i - 64 for i in range(65, 91)}
