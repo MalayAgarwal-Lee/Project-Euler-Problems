@@ -1,4 +1,5 @@
 from functools import reduce
+from time import time
 
 '''
 Problem 42
