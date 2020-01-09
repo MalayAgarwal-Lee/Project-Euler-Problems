@@ -1,19 +1,28 @@
-def generateFibonacci():
-    a = 64128128989018176585252040302126085488071926335079419810451272680747571571160723032344138301571590200724086190900349998530438936403887378198185
-    b = 103761492339168842018587530858475070677646106130118753779820168511287979391742270610548339362599898075442971926458625775220986965441725618892473
-    while True:
-        yield a
-        a, b = a, a + b
+from math import log10, ceil
 
-if __name__ == '__main__':
+record = [-1, -1]
 
-    fibonacciSequence = generateFibonacci()
-    i = 1
-    while True:
 
-        currentTerm = str(next(fibonacciSequence))
-        if len(currentTerm) == 1000:
-            print(currentTerm)
-            print(i)
-            break
-        i += 1
+def fib(n):
+    global record
+
+    if n == 0:
+        return (0, 1)
+
+    a, b = fib(n // 2)
+
+    c = a * (2 * b - a)
+    d = a * a + b * b
+
+    if n % 2 == 0:
+        return (c, d)
+    else:
+        return (d, c + d)
+
+n = 1024
+while True:
+    num = fib(n)[0]
+    if ceil(log10(num)) == 1000:
+        print(num % 100000007)
+        break
+    n += 1      
