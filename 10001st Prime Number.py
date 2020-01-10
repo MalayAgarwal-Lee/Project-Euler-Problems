@@ -1,43 +1,22 @@
-from math import sqrt
+def sieve(limit):
+    sieve = {i: False for i in range(3, limit, 2)}
+    sqroot = limit ** (1/2)
+    n = 0
+    key, value = sieve.items()[n]
+    while key <= sqroot:
+        if not value:
+            sieve.update({i: True for i in range(key * key, limit, key)})
 
-'''
-Problem 7
-By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+        n += 1
+        key, value = sieve.items()[n]
 
-What is the 10001st prime number?
-'''
-
-def generatePrimeNumbers():
-
-    number  = 19
-    c = 0
-
-    while True:
-
-        if not (number % 2 == 0 and number > 2):
-
-            for divisor in range(3, int(sqrt(number))+1, 2):
-
-                if number % divisor == 0:
-                    c = 1
-                    break
-
-            if  c != 1:
-                yield number
-
-        number += 1
-        c = 0
-
+    return [key for key, value in sieve.items() if not value]
 
 
 def main():
+    limit = 100000
+    print(sieve(limit))
 
-    i = 8
-    primeNumbers = generatePrimeNumbers()
-    number = 0
-    while i <= 100001:
-        number = next(primeNumbers)
-        i += 1
-    print(number)
 
-main()
+if __name__ == '__main__':
+    main()
