@@ -13,11 +13,15 @@ sum = 1
 for each prime factor pi and its corresponding power a:
     sum = sum * (the polynomial P(pi) upto a + 1 terms where all coefficients are 1)
 
-Since all coefficients are 1, the polynomial P(pi) is GP sum with a=1, d=pi and n=a+1
+Since all coefficients are 1, the polynomial P(pi) is GP sum with a=1, r=pi and n=a+1
 Therefore, P(pi) = (pi ^ (a + 1) - 1) / (pi - 1)
 
 This includes the number, which is subtracted to obtain the result of d(n) defined below
 '''
+
+
+def gp_sum(r, n):
+    return (r ** n - 1) / (r - 1)
 
 
 def d(n):
@@ -29,7 +33,7 @@ def d(n):
         number = number // 2
         count += 1
 
-    summation *= (2 ** (count + 1) - 1)
+    summation *= gp_sum(2, count + 1)
 
     limit = int(number ** (1 / 2)) + 1
     for i in range(3, limit, 2):
@@ -39,10 +43,10 @@ def d(n):
             count += 1
 
         if count != 0:
-            summation *= (i ** (count + 1) - 1) / (i - 1)
+            summation *= gp_sum(i, count + 1)
 
     if number > 2:
-        summation *= (number ** 2 - 1) / (number - 1)
+        summation *= gp_sum(number, 2)
 
     return summation - n
 
